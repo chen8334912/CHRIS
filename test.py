@@ -1,3 +1,6 @@
-while True:
-    choice = input('please iput:').strip()
-    if choice == '5': break
+
+
+
+ch = eval('[1,3]')
+
+print(ch[0])
