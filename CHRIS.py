@@ -175,8 +175,6 @@ for chris in li:
 '''''
 list
 
-
-
 # li = [1, 12, 9, 'cklsaj', ['df', 9, 12], True]
 
 # # li[2] = 11111
@@ -189,7 +187,6 @@ list
 # li = [1, 12, 9, 'cklsaj', ['df', 9, 12], True]
 # v = li[4][2]
 # print(v)
-
 
 
 # m = [12, 1564, 11, '婆婆', 'sadf', [1, 451, 'oo']]
@@ -212,14 +209,12 @@ list
 # print(v)
 
 
-
 # l1	=	[11,22,33]
 # l2	=	[22,33,44]
 # a.	 获取内容相同的元素列表
 # b.	 获取 l1	 中有， l2 中没有的元素列表
 # c.	 获取 l2	 中有， l1 中没有的元素列表
 # d.	 获取 l1	 和 l2	 中内容都不同的元素
-
 
 
 # l1	=	[11, 22, 33]
@@ -301,16 +296,11 @@ list
 # print(s)
 
 
-
-
-
 # li = [11, 22, 33, "asd", "xyz", "879", "hello"]
 #
 # m = str(item) for item in li:
 # n = '_'.join(m)
 # print(n)
-
-
 
 
 # li = ['alex','eric',123]
@@ -376,7 +366,6 @@ list
 # print(a)
 
 
-
 '''''
 # def test(x, y, z):
 #     print(x)
@@ -389,9 +378,6 @@ list
 # test(8, 2, z = 3)
 #
 '''''
-
-
-
 
 # def chris(x, y = 'fish'):
 #     print(type(x), x)
@@ -410,12 +396,10 @@ list
 #
 
 
-
 # def test(x, **kwargs):
 #     print(x)
 #     print(kwargs)
 # test(1, y = 3,w = 5)
-
 
 
 # def chris(x, *args, **kwargs):
@@ -479,8 +463,6 @@ list
 # print(name)
 # weihou()
 # print(name)
-
-
 
 
 '''''递归函数
@@ -565,7 +547,6 @@ chris(3)
 # print(ln)
 
 
-
 # name = 'chris'
 # sj = lambda x : name+'_shuaqi'
 # print(sj(name))
@@ -589,11 +570,8 @@ print(cal(5))
 # # foo(bar('alex'))
 
 
-
-num=[1,2,10,5,3,7]
-num2=[1,22,10,5,3,7]
-
-
+num = [1, 2, 10, 5, 3, 7]
+num2 = [1, 22, 10, 5, 3, 7]
 
 # chris = []
 # for i in num:
@@ -658,7 +636,7 @@ num2=[1,22,10,5,3,7]
 # print(list(filter(lambda x:not x.endswith('sb'), peo)))
 
 
-li = [1,2,3,100]
+li = [1, 2, 3, 100]
 
 #
 # ret = 0
@@ -700,7 +678,6 @@ li = [1,2,3,100]
 # print(reduce_test(lambda x,y:x+y,num_l))
 
 
-
 # name='你好'
 # print(bytes(name,encoding='utf-8').decode('utf-8'))
 
@@ -731,7 +708,6 @@ li = [1,2,3,100]
 # l1=['a10','a2','a10'] #不同类型之间不能进行比较
 # print(list(max(l)))
 # print('--->',list(max(l1)))
-
 
 
 # l=[1,3,100,-1,2]
@@ -843,10 +819,6 @@ li = [1,2,3,100]
 # print(chris())
 
 
-
-
-
-
 '''''
 
 def get_popu():
@@ -871,9 +843,8 @@ print (all_pop)
 
 for p in g:
     print (eval)
-    
-'''''
 
+'''''
 
 '''''
 def test():
@@ -891,7 +862,6 @@ t.send(55)
 t.send(88)
 
 '''''
-
 
 '''''
 
@@ -930,7 +900,6 @@ res = func(1, 300)
 print(res)
 
 '''''
-
 
 '''''
 
@@ -1034,7 +1003,6 @@ stu3 = stu_info('Rose',19,'Art','UK')# 既然你已经传参了，就随你了�
 # print(ret)
 
 
-
 # str = '老男孩'
 # print(str.encode('utf-8'))
 # print(bytes('老男孩', encoding='utf-8'))
@@ -1062,14 +1030,11 @@ stu3 = stu_info('Rose',19,'Art','UK')# 既然你已经传参了，就随你了�
 # print('_'.join(list(zip(l1,l2,l3))[0]))
 
 
-
-
 # a=[1,2]
 # def ss():
 #     a.append(456)
 # ss()
 # print(a)
-
 
 
 # name = 'root'
@@ -1087,7 +1052,6 @@ stu3 = stu_info('Rose',19,'Art','UK')# 既然你已经传参了，就随你了�
 # ret = func()
 # print(ret)
 # print(name)
-
 
 
 #
@@ -1195,13 +1159,24 @@ stu3 = stu_info('Rose',19,'Art','UK')# 既然你已经传参了，就随你了�
 # shopping_car('monkey')
 
 
-
-
 def fetch(data):
     print('This is fetch')
-    print('user data is',data)
-    backend_data = 'backend %s' %data
-    with open('haproxy.conf','r') as read_f:
+    print('user data is', data)
+    backend_data = 'backend %s' % data
+    with open('haproxy.conf', 'r') as read_f:
+        tag = False
+        ret = []
+        for read_line in read_f:
+            if read_line.strip() == backend_data:
+                tag = True
+                continue
+            if tag and read_line.startswith('backend'):
+                break
+            if tag:
+                print(read_line,end='')
+                ret.append(read_line.strip())
+    return ret
+
 
 
 
@@ -1209,12 +1184,16 @@ def add():
     pass
 
 
-def change():
-    pass
-
+def change(data):
+    print('This is change')
+    print('user Transmitted data is', data)
+    data[0]['backend']       #文件当中的一条记录
+    res = fetch(backend)
+    print(res)
 
 def delete():
     pass
+
 
 if __name__ == '__main__':
     msg = '''
@@ -1226,7 +1205,7 @@ if __name__ == '__main__':
     '''
 
     msg_dic = {
-        '1':fetch,
+        '1': fetch,
         '2': add,
         '3': change,
         '4': delete,
@@ -1235,8 +1214,11 @@ if __name__ == '__main__':
     while True:
         print(msg)
         choice = input('please iput:').strip()
-        if not choice:continue
-        if choice == '5':break
+        if not choice: continue
+        if choice == '5': break
 
         data = input('please insert your data:').strip()
-        msg_dic[choice](data)
+        if choice != 1:
+            data = eval(data)
+        res = msg_dic[choice](data)
+        print(res)
